@@ -8,6 +8,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         ArrayList<Product> Products = new ArrayList<>();
 
+        new MainForm();
+
         System.out.println("        ____  ____   ___  ____  _   _  ____ _____   __  __    _    _   _    _    ____ _____ ____        \n" +
                 "  _____|  _ \\|  _ \\ / _ \\|  _ \\| | | |/ ___|_   _| |  \\/  |  / \\  | \\ | |  / \\  / ___| ____|  _ \\ _____ \n" +
                 " |_____| |_) | |_) | | | | | | | | | | |     | |   | |\\/| | / _ \\ |  \\| | / _ \\| |  _|  _| | |_) |_____|\n" +
