@@ -1,66 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MainForm">
-  <grid id="27dc6" binding="MainWindow" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="MainWindow" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="658" height="400"/>
+      <xy x="20" y="20" width="790" height="400"/>
     </constraints>
     <properties>
-      <background color="-7235944"/>
+      <background color="-16774378"/>
       <enabled value="true"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="b5871" binding="MidPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <grid id="81ac9" binding="Home" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="80" left="50" bottom="0" right="50"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="4da68" class="javax.swing.JButton" binding="button1" default-binding="true">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="60"/>
-                <maximum-size width="500" height="500"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-4867915"/>
-              <enabled value="true"/>
-              <font name="JetBrains Mono" size="18"/>
-              <foreground color="-16777216"/>
-              <hideActionText value="true"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="11"/>
-              <text value="Add"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <grid id="ed9fa" binding="TopPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <card name="Card1"/>
         </constraints>
         <properties>
-          <background color="-3811101"/>
-          <foreground color="-16777216"/>
+          <background color="-16774378"/>
+          <enabled value="true"/>
+          <foreground color="-16774378"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="dc9aa" class="javax.swing.JLabel" binding="HeaderText">
+          <component id="170a4" class="javax.swing.JLabel" binding="HeaderText">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-2695446"/>
+              <enabled value="true"/>
+              <font name="JetBrains Mono" size="28" style="1"/>
+              <foreground color="-1907998"/>
+              <text value="Product Manager v1.0"/>
+            </properties>
+          </component>
+          <grid id="275c5" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16774378"/>
+              <foreground color="-856081"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="a321b" class="javax.swing.JButton" binding="addProductButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="140" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-10514749"/>
+                  <font name="JetBrains Mono" size="22" style="1"/>
+                  <foreground color="-1182469"/>
+                  <text value="AddProduct"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="ff16c" binding="AddProductScreen" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="50" left="0" bottom="0" right="0"/>
+        <constraints>
+          <card name="Card2"/>
+        </constraints>
+        <properties>
+          <background color="-16774378"/>
+          <enabled value="true"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="bddde" class="javax.swing.JLabel" binding="AddProduct">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-2695446"/>
+              <enabled value="true"/>
               <font name="JetBrains Mono" size="28" style="1"/>
-              <foreground color="-15329770"/>
-              <text value="Product Manager v1.0"/>
+              <foreground color="-1907998"/>
+              <text value="Add Product"/>
             </properties>
           </component>
+          <grid id="db7d5" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="50" left="0" bottom="50" right="0"/>
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16774378"/>
+              <font name="JetBrains Mono" size="20" style="1"/>
+              <foreground color="-856081"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="86843" class="javax.swing.JTextField" binding="Name">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="160" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-11315625"/>
+                  <font name="JetBrains Mono" size="18" style="1"/>
+                  <foreground color="-1182469"/>
+                  <text value=""/>
+                  <toolTipText value="Name"/>
+                </properties>
+              </component>
+              <component id="9e2f4" class="javax.swing.JTextField" binding="Cost">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="160" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-11315625"/>
+                  <font name="JetBrains Mono" size="18" style="1"/>
+                  <foreground color="-1182469"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="78ca6" class="javax.swing.JTextField" binding="Sold">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="160" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-11315625"/>
+                  <font name="JetBrains Mono" size="18" style="1"/>
+                  <foreground color="-1182469"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <component id="141f" class="javax.swing.JButton" binding="addButton" default-binding="true">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="80" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-10514749"/>
+                  <font name="JetBrains Mono" size="24" style="1"/>
+                  <foreground color="-1182469"/>
+                  <text value="Add"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
+      </grid>
+      <grid id="22e09" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <card name="Card3"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children/>
       </grid>
     </children>
   </grid>
