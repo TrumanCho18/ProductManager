@@ -16,6 +16,8 @@ public class MainForm extends JFrame {
     private JTextField Cost;
     private JTextField Sold;
     private JButton addButton;
+    private JLabel Status;
+    private JSpinner qty;
 
     public MainForm() {
 
@@ -31,8 +33,25 @@ public class MainForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 c.next(MainWindow);
+                Status.setText(" ");
             }
         });
+
+        Name.setBorder(null);
+        Sold.setBorder(null);
+        Cost.setBorder(null);
+        qty.setBorder(null);
+
+        addButton.setBorderPainted(false);
+        addButton.setFocusPainted(false);
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Status.setForeground(Color.GREEN);
+                Status.setText("Product Added Successfully!");
+            }
+        });
+
 
         setTitle("ProductManager(v.beta)");
         setDefaultCloseOperation(EXIT_ON_CLOSE);

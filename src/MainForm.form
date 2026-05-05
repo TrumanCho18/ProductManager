@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MainForm">
   <grid id="27dc6" binding="MainWindow" layout-manager="CardLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="790" height="400"/>
+      <xy x="20" y="20" width="790" height="455"/>
     </constraints>
     <properties>
       <background color="-16774378"/>
@@ -85,10 +85,10 @@
               <text value="Add Product"/>
             </properties>
           </component>
-          <grid id="db7d5" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="db7d5" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="50" left="0" bottom="50" right="0"/>
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-16774378"/>
@@ -107,13 +107,14 @@
                   <background color="-11315625"/>
                   <font name="JetBrains Mono" size="18" style="1"/>
                   <foreground color="-1182469"/>
+                  <horizontalAlignment value="0"/>
                   <text value=""/>
                   <toolTipText value="Name"/>
                 </properties>
               </component>
               <component id="9e2f4" class="javax.swing.JTextField" binding="Cost">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="160" height="40"/>
                   </grid>
                 </constraints>
@@ -121,12 +122,13 @@
                   <background color="-11315625"/>
                   <font name="JetBrains Mono" size="18" style="1"/>
                   <foreground color="-1182469"/>
+                  <horizontalAlignment value="0"/>
                   <text value=""/>
                 </properties>
               </component>
               <component id="78ca6" class="javax.swing.JTextField" binding="Sold">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="160" height="40"/>
                   </grid>
                 </constraints>
@@ -134,12 +136,13 @@
                   <background color="-11315625"/>
                   <font name="JetBrains Mono" size="18" style="1"/>
                   <foreground color="-1182469"/>
+                  <horizontalAlignment value="0"/>
                   <text value=""/>
                 </properties>
               </component>
               <component id="141f" class="javax.swing.JButton" binding="addButton" default-binding="true">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
                     <preferred-size width="80" height="50"/>
                   </grid>
                 </constraints>
@@ -148,6 +151,30 @@
                   <font name="JetBrains Mono" size="24" style="1"/>
                   <foreground color="-1182469"/>
                   <text value="Add"/>
+                </properties>
+              </component>
+              <component id="44b44" class="javax.swing.JLabel" binding="Status">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="JetBrains Mono"/>
+                  <foreground color="-15014656"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value=" "/>
+                </properties>
+              </component>
+              <component id="e3a81" class="javax.swing.JSpinner" binding="qty">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="90" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-11315625"/>
+                  <font name="JetBrains Mono" size="20" style="1"/>
+                  <foreground color="-11315625"/>
                 </properties>
               </component>
             </children>
