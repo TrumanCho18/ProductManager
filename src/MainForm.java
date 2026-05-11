@@ -21,6 +21,7 @@ public class MainForm extends JFrame {
     private JLabel Status;
     private JSpinner qty;
     private JTextField Date;
+    private JButton Xbutton;
 
     public MainForm() {
 
@@ -58,6 +59,7 @@ public class MainForm extends JFrame {
                 textField.setBackground(Color.GRAY);
             }
         });
+        qty.setValue(1);
 
         addButton.setBorderPainted(false);
         addButton.setFocusPainted(false);
@@ -68,6 +70,9 @@ public class MainForm extends JFrame {
                 Status.setText("Product Added Successfully!");
             }
         });
+
+        Xbutton.setBorderPainted(false);
+        Xbutton.setFocusPainted(false);
 
         Name.addFocusListener(new FocusListener() {
             @Override
