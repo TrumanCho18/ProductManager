@@ -1,3 +1,5 @@
+import com.intellij.uiDesigner.core.GridConstraints;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -24,6 +26,8 @@ public class MainForm extends JFrame {
     private JTextField Date;
     private JButton Xbutton;
     private JButton viewItemsButton;
+    private JPanel ListScreen;
+    private JPanel ItemGrid;
 
     public MainForm() {
 
@@ -50,7 +54,9 @@ public class MainForm extends JFrame {
         viewItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                c.next(MainWindow);
+                c.next(MainWindow);
+                ListScreen.add(new ItemTile(), new GridConstraints());
             }
         });
 
