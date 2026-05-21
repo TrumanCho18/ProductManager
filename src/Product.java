@@ -56,8 +56,8 @@ public class Product {
 
     public void AddStock(int amt) {
         Qty += amt;
-        System.out.println("Quantity of " + Name + " successfully updated.");
-        System.out.println(Name + " qty: " + Qty);
+        //System.out.println("Quantity of " + Name + " successfully updated.");
+        //System.out.println(Name + " qty: " + Qty);
     }
 
     //GETTERS
