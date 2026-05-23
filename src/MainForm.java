@@ -27,6 +27,7 @@ public class MainForm extends JFrame {
     private JButton Xbutton;
     private JButton viewItemsButton;
     private JPanel ListScreen;
+    private JScrollPane ItemScrollPanel;
     private JPanel ItemGrid;
 
     public MainForm() {
@@ -38,6 +39,11 @@ public class MainForm extends JFrame {
         MainWindow.setLayout(c);
 
         ArrayList<Product> ProductList = new ArrayList<>();
+
+        ItemScrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        ItemScrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        ItemScrollPanel.getViewport().setBackground(new Color(0, 11, 22));
+        ItemScrollPanel.getVerticalScrollBar().setBackground(new Color(95, 142, 195));
 
         addProductButton.setBorderPainted(false);
         addProductButton.setFocusPainted(false);
@@ -56,7 +62,25 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 c.next(MainWindow);
                 c.next(MainWindow);
-                ListScreen.add(new ItemTile(), new GridConstraints());
+
+                JPanel ScrollContent = new JPanel();
+                ScrollContent.setBackground(new Color(0, 11, 22));
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.insets = new Insets(5, 5, 5, 5);
+
+                Dimension minSize = new Dimension(800, 600);
+                Dimension prefSize = new Dimension(800, 600);
+                Dimension maxSize = new Dimension(800, Integer.MAX_VALUE);
+                ScrollContent.setMinimumSize(minSize);
+                ScrollContent.setPreferredSize(prefSize);
+                ScrollContent.setMaximumSize(maxSize);
+
+
+                for (Product p : ProductList) {
+                    ScrollContent.add(new ItemTile(p), gbc);
+                }
+
+                ItemScrollPanel.setViewportView(ScrollContent);
             }
         });
 

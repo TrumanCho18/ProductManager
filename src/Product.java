@@ -105,6 +105,18 @@ public class Product {
         return YearSold;
     }
 
+    public int getQty() {
+        return Qty;
+    }
+
+    public int getSoldAmt() {
+        return SoldAmt;
+    }
+
+    public double getEfficiency() {
+        return Efficiency;
+    }
+
     //SETTERS
     public void setName(String name) {
         Name = name;
