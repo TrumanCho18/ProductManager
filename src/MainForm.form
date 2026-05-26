@@ -235,7 +235,7 @@
           </component>
         </children>
       </grid>
-      <grid id="ba9e5" binding="ListScreen" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="ba9e5" binding="ListScreen" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <card name="Card3"/>
@@ -245,18 +245,55 @@
         </properties>
         <border type="none"/>
         <children>
-          <scrollpane id="59620" binding="ItemScrollPanel">
+          <component id="6dd39" class="javax.swing.JButton" binding="Xbutton2">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="40" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-3342326"/>
+              <font name="JetBrains Mono" size="18" style="1"/>
+              <foreground color="-2763307"/>
+              <text value="X"/>
+            </properties>
+          </component>
+          <grid id="5ff06" binding="ItemHolder" layout-manager="GridBagLayout">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-16774378"/>
-              <enabled value="false"/>
-              <foreground color="-16774378"/>
             </properties>
             <border type="none"/>
             <children/>
-          </scrollpane>
+          </grid>
+          <component id="58926" class="javax.swing.JButton" binding="NextPage">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="60" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-10842923"/>
+              <font name="JetBrains Mono" size="20" style="1"/>
+              <foreground color="-2763307"/>
+              <text value="&gt;"/>
+            </properties>
+          </component>
+          <component id="d0bf4" class="javax.swing.JButton" binding="PrevPage">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="60" height="40"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-10842923"/>
+              <font name="JetBrains Mono" size="20" style="1"/>
+              <foreground color="-2763307"/>
+              <text value="&lt;"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

@@ -1,5 +1,3 @@
-import com.intellij.uiDesigner.core.GridConstraints;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -27,8 +25,14 @@ public class MainForm extends JFrame {
     private JButton Xbutton;
     private JButton viewItemsButton;
     private JPanel ListScreen;
-    private JScrollPane ItemScrollPanel;
+    private JButton Xbutton2;
+    private JPanel ItemHolder;
+    private JButton NextPage;
+    private JButton PrevPage;
     private JPanel ItemGrid;
+    private int min;
+    private int max;
+    private int Page = 1;
 
     public MainForm() {
 
@@ -39,11 +43,6 @@ public class MainForm extends JFrame {
         MainWindow.setLayout(c);
 
         ArrayList<Product> ProductList = new ArrayList<>();
-
-        ItemScrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        ItemScrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ItemScrollPanel.getViewport().setBackground(new Color(0, 11, 22));
-        ItemScrollPanel.getVerticalScrollBar().setBackground(new Color(95, 142, 195));
 
         addProductButton.setBorderPainted(false);
         addProductButton.setFocusPainted(false);
@@ -60,27 +59,107 @@ public class MainForm extends JFrame {
         viewItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                Page = 1;
                 c.next(MainWindow);
                 c.next(MainWindow);
 
-                JPanel ScrollContent = new JPanel();
-                ScrollContent.setBackground(new Color(0, 11, 22));
                 GridBagConstraints gbc = new GridBagConstraints();
                 gbc.insets = new Insets(5, 5, 5, 5);
+                gbc.fill = GridBagConstraints.BOTH;
+                gbc.gridx = 0;
+                gbc.gridy = 0;
 
-                Dimension minSize = new Dimension(800, 600);
-                Dimension prefSize = new Dimension(800, 600);
-                Dimension maxSize = new Dimension(800, Integer.MAX_VALUE);
-                ScrollContent.setMinimumSize(minSize);
-                ScrollContent.setPreferredSize(prefSize);
-                ScrollContent.setMaximumSize(maxSize);
+                min = 0;
+                max = ProductList.size();
 
-
-                for (Product p : ProductList) {
-                    ScrollContent.add(new ItemTile(p), gbc);
+                if (max > 8) {
+                    max = 8;
                 }
 
-                ItemScrollPanel.setViewportView(ScrollContent);
+                for (int i = min; i < max; i++) {
+                    Product p = ProductList.get(i);
+                    ItemHolder.add(new ItemTile(p), gbc);
+                    gbc.gridx++;
+                    if (gbc.gridx >= 4) {
+                        gbc.gridx = 0;
+                        gbc.gridy++;
+                    }
+                }
+            }
+        });
+
+        NextPage.setFocusPainted(false);
+        NextPage.setBorderPainted(false);
+        PrevPage.setBorderPainted(false);
+        PrevPage.setFocusPainted(false);
+
+        PrevPage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ItemHolder.removeAll();
+
+                if (Page > 1) {
+                    Page--;
+                }
+                min = (Page - 1) * 8;
+                max = Page * 8;
+
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.insets = new Insets(5, 5, 5, 5);
+                gbc.fill = GridBagConstraints.BOTH;
+                gbc.gridx = 0;
+                gbc.gridy = 0;
+
+                c.previous(MainWindow);
+                c.next(MainWindow);
+
+                for (int i = min; i < max; i++) {
+                    Product p = ProductList.get(i);
+                    ItemHolder.add(new ItemTile(p), gbc);
+                    gbc.gridx++;
+                    if (gbc.gridx >= 4) {
+                        gbc.gridx = 0;
+                        gbc.gridy++;
+                    }
+                }
+            }
+        });
+
+        NextPage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ItemHolder.removeAll();
+
+                if (max < ProductList.size()) {
+                    Page++;
+                }
+
+                min = (Page - 1) * 8;
+                max = Page * 8;
+
+                if (max > ProductList.size()) {
+                    max = ProductList.size();
+                }
+
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.insets = new Insets(5, 5, 5, 5);
+                gbc.fill = GridBagConstraints.BOTH;
+                gbc.gridx = 0;
+                gbc.gridy = 0;
+
+                c.previous(MainWindow);
+                c.next(MainWindow);
+
+                for (int i = min; i < max; i++) {
+                    Product p = ProductList.get(i);
+                    ItemHolder.add(new ItemTile(p), gbc);
+                    gbc.gridx++;
+                    if (gbc.gridx >= 4) {
+                        gbc.gridx = 0;
+                        gbc.gridy++;
+                    }
+                }
             }
         });
 
@@ -169,6 +248,16 @@ public class MainForm extends JFrame {
         Xbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                c.first(MainWindow);
+            }
+        });
+
+        Xbutton2.setBorderPainted(false);
+        Xbutton2.setFocusPainted(false);
+        Xbutton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ItemHolder.removeAll();
                 c.first(MainWindow);
             }
         });
