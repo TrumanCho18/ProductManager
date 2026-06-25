@@ -281,6 +281,7 @@ public class MainForm extends JFrame {
                     Status.setForeground(Color.RED);
                     Status.setText("Invalid fields!");
                 }
+                ItemTile.saveData(ProductList);
             }
         });
 
@@ -331,6 +332,7 @@ public class MainForm extends JFrame {
                     SellStatus.setForeground(Color.RED);
                     SellStatus.setText("Invalid fields!");
                 }
+                ItemTile.saveData(ProductList);
             }
         });
 
@@ -339,6 +341,7 @@ public class MainForm extends JFrame {
         Xbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ItemTile.saveData(ProductList);
                 c.first(MainWindow);
             }
         });
@@ -348,6 +351,7 @@ public class MainForm extends JFrame {
         Xbutton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ItemTile.saveData(ProductList);
                 ItemHolder.removeAll();
                 c.first(MainWindow);
             }
@@ -358,6 +362,7 @@ public class MainForm extends JFrame {
         SellXButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ItemTile.saveData(ProductList);
                 c.first(MainWindow);
             }
         });
@@ -476,11 +481,11 @@ public class MainForm extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
 
+        ItemTile.loadData(ProductList);
     }
 
     public static void main(String[] args) {
         new MainForm();
         CardLayout c = new CardLayout();
     }
-
 }

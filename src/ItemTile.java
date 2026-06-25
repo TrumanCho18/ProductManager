@@ -5,7 +5,17 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.nio.file.StandardOpenOption;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ItemTile extends JPanel {
 
@@ -142,5 +152,63 @@ public class ItemTile extends JPanel {
             infoLabels.add(Details);
         }
         return infoLabels;
+    }
+
+    public static void loadData(ArrayList<Product> pList) {
+
+        ArrayList<String> lines = getFileData("src/DataSave.txt");
+
+        for (int i = 0; i < lines.size(); i++) {
+            String Name = lines.get(i).split(",")[0];
+
+            double Cost = Double.parseDouble(lines.get(i).split(",")[1]);
+            double SellPrice = Double.parseDouble(lines.get(i).split(",")[2]);
+            double SubProfit = Double.parseDouble(lines.get(i).split(",")[3]);
+
+            int MonthListed = Integer.parseInt(lines.get(i).split(",")[4]);
+            int DayListed = Integer.parseInt(lines.get(i).split(",")[5]);
+            int YearListed = Integer.parseInt(lines.get(i).split(",")[6]);
+
+            int MonthSold = Integer.parseInt(lines.get(i).split(",")[7]);
+            int DaySold = Integer.parseInt(lines.get(i).split(",")[8]);
+            int YearSold = Integer.parseInt(lines.get(i).split(",")[9]);
+
+            int Qty = Integer.parseInt(lines.get(i).split(",")[10]);
+            int SoldAmt = Integer.parseInt(lines.get(i).split(",")[11]);
+            double Efficiency = Double.parseDouble(lines.get(i).split(",")[12]);
+
+            pList.add(new Product(Name, Cost, SellPrice, SubProfit, MonthListed, DayListed, YearListed, MonthSold, DaySold, YearSold, Qty, SoldAmt, Efficiency));
+        }
+    }
+
+    public static void saveData(ArrayList<Product> pList) {
+        Path p = Paths.get("src/DataSave.txt");
+
+        try {
+            Files.writeString(p, "");
+            for (int i = 0; i < pList.size(); i++) {
+                String contentToAppend = pList.get(i).printSaveDataFormat();
+                Files.writeString(p, contentToAppend, StandardOpenOption.APPEND);
+            }
+        } catch (IOException e) {
+            System.err.println("An error occurred while editing the file: " + e.getMessage());
+        }
+    }
+
+    public static ArrayList<String> getFileData(String fileName) {
+        ArrayList<String> fileData = new ArrayList<String>();
+        try {
+            File f = new File(fileName);
+            Scanner s = new Scanner(f);
+            while (s.hasNextLine()) {
+                String line = s.nextLine();
+                if (!line.equals(""))
+                    fileData.add(line);
+            }
+            return fileData;
+        }
+        catch (FileNotFoundException e) {
+            return fileData;
+        }
     }
 }

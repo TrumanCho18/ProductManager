@@ -35,11 +35,36 @@ public class Product {
         Qty = 1;
     }
 
+    public Product(String n, double c, double Spri, double Sprof, int Ml, int Dl, int Yl, int Ms, int Ds, int Ys, int q, int s, double e) {
+        Name = n;
+
+        Cost = c;
+        SellPrice = Spri;
+        SubProfit = Sprof;
+
+        MonthListed = Ml;
+        DayListed = Dl;
+        YearListed = Yl;
+
+        MonthSold = Ms;
+        DaySold = Ds;
+        YearSold = Ys;
+
+        int Qty = q;
+        int SoldAmt = s;
+
+        double Efficiency = e;
+    }
+
     @Override
     public String toString() {
 
         return "+----------------------------+ \n Name: " + Name + "\n SellPrice: " + SellPrice + "\n SubProfit: " + SubProfit + "\n DateListed: " + getDateListed() + "\n AvgEfficiency: " + Efficiency + "\n Quantity: " + Qty + "\n AmountSold: " + SoldAmt;
 
+    }
+
+    public String printSaveDataFormat() {
+        return (Name + "," + Cost + "," + SellPrice + "," + SubProfit + "," + MonthListed + "," + DayListed + "," + YearListed + "," + MonthSold + "," + DaySold + "," + YearSold + "," + Qty + "," + SoldAmt + "," + Efficiency + "\n");
     }
 
     public void setEfficiency() {
