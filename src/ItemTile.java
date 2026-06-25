@@ -156,7 +156,7 @@ public class ItemTile extends JPanel {
 
     public static void loadData(ArrayList<Product> pList) {
 
-        ArrayList<String> lines = getFileData("src/DataSave.txt");
+        ArrayList<String> lines = getFileData("DataSave.txt");
 
         for (int i = 0; i < lines.size(); i++) {
             String Name = lines.get(i).split(",")[0];
@@ -182,7 +182,7 @@ public class ItemTile extends JPanel {
     }
 
     public static void saveData(ArrayList<Product> pList) {
-        Path p = Paths.get("src/DataSave.txt");
+        Path p = Paths.get("DataSave.txt");
 
         try {
             Files.writeString(p, "");

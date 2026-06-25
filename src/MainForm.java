@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import java.net.URL;
 
 public class MainForm extends JFrame {
 
@@ -480,6 +482,12 @@ public class MainForm extends JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        URL iconURL = getClass().getResource("Icon.png");
+        if (iconURL != null) {
+            ImageIcon icon = new ImageIcon(iconURL);
+            setIconImage(icon.getImage());
+        }
 
         ItemTile.loadData(ProductList);
     }
