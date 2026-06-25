@@ -52,6 +52,7 @@ public class Product {
         double ans = SubProfit / noOfDaysBetween;
 
         Efficiency = (Efficiency + ans) / (SoldAmt);
+        Efficiency = Math.round(Efficiency * 1000.0) / 1000.0;
     }
 
     public void AddStock(int amt) {

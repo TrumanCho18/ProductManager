@@ -29,6 +29,15 @@ public class MainForm extends JFrame {
     private JPanel ItemHolder;
     private JButton NextPage;
     private JButton PrevPage;
+    private JPanel SellScreen;
+    private JLabel SellProducts;
+    private JTextField SellName;
+    private JButton Sell;
+    private JLabel SellStatus;
+    private JSpinner SellQty;
+    private JTextField SellDate;
+    private JButton sellitemsButton;
+    private JButton SellXButton;
     private JPanel ItemGrid;
     private int min;
     private int max;
@@ -51,6 +60,17 @@ public class MainForm extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 c.next(MainWindow);
                 Status.setText(" ");
+            }
+        });
+
+        sellitemsButton.setBorderPainted(false);
+        sellitemsButton.setFocusPainted(false);
+        sellitemsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                c.next(MainWindow);
+                c.next(MainWindow);
+                c.next(MainWindow);
             }
         });
 
@@ -79,7 +99,7 @@ public class MainForm extends JFrame {
 
                 for (int i = min; i < max; i++) {
                     Product p = ProductList.get(i);
-                    ItemHolder.add(new ItemTile(p), gbc);
+                    ItemHolder.add(new ItemTile(p, c, ItemHolder, Page, ProductList), gbc);
                     gbc.gridx++;
                     if (gbc.gridx >= 4) {
                         gbc.gridx = 0;
@@ -116,7 +136,7 @@ public class MainForm extends JFrame {
 
                 for (int i = min; i < max; i++) {
                     Product p = ProductList.get(i);
-                    ItemHolder.add(new ItemTile(p), gbc);
+                    ItemHolder.add(new ItemTile(p, c, ItemHolder, Page, ProductList), gbc);
                     gbc.gridx++;
                     if (gbc.gridx >= 4) {
                         gbc.gridx = 0;
@@ -153,7 +173,7 @@ public class MainForm extends JFrame {
 
                 for (int i = min; i < max; i++) {
                     Product p = ProductList.get(i);
-                    ItemHolder.add(new ItemTile(p), gbc);
+                    ItemHolder.add(new ItemTile(p, c, ItemHolder, Page, ProductList), gbc);
                     gbc.gridx++;
                     if (gbc.gridx >= 4) {
                         gbc.gridx = 0;
@@ -168,17 +188,38 @@ public class MainForm extends JFrame {
         Cost.setBorder(null);
         Date.setBorder(null);
 
-        qty.setBorder(null);
-        JComponent editor = qty.getEditor();
+        SellName.setBorder(null);
+        SellQty.setBorder(null);
+        SellDate.setBorder(null);
+        Sell.setFocusPainted(false);
+        Sell.setBorderPainted(false);
+
+        SellQty.setBorder(null);
+        JComponent editor = SellQty.getEditor();
         JFormattedTextField textField = ((JSpinner.DefaultEditor) editor).getTextField();
         textField.setBackground(Color.GRAY);
         textField.setForeground(Color.WHITE);
-        qty.addChangeListener(e -> {
-            int val = (int) qty.getValue();
+        SellQty.addChangeListener(e -> {
+            int val = (int) SellQty.getValue();
             if (val < 1) {
                 textField.setBackground(Color.RED);
             } else {
                 textField.setBackground(Color.GRAY);
+            }
+        });
+        SellQty.setValue(1);
+
+        qty.setBorder(null);
+        JComponent editor2 = qty.getEditor();
+        JFormattedTextField textField2 = ((JSpinner.DefaultEditor) editor2).getTextField();
+        textField2.setBackground(Color.GRAY);
+        textField2.setForeground(Color.WHITE);
+        qty.addChangeListener(e -> {
+            int val = (int) qty.getValue();
+            if (val < 1) {
+                textField2.setBackground(Color.RED);
+            } else {
+                textField2.setBackground(Color.GRAY);
             }
         });
         qty.setValue(1);
@@ -243,6 +284,56 @@ public class MainForm extends JFrame {
             }
         });
 
+        Sell.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                boolean valid = false;
+
+                String temp;
+                String Name = SellName.getText();
+                Product p = new Product("", 0, 0, 1, 1,1);
+                int M = 0;
+                int D = 0;
+                int Y = 0;
+
+                for (int i = 0; i < ProductList.size(); i++) {
+                    if (ProductList.get(i).getName().equals(Name)) {
+                        p = ProductList.get(i);
+                        valid = true;
+                        break;
+                    }
+                }
+
+                temp = SellDate.getText();
+                if (temp.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                    M = Integer.parseInt(temp.split("/")[0]);
+                    D = Integer.parseInt(temp.split("/")[1]);
+                    Y = Integer.parseInt(temp.split("/")[2]);
+                } else {
+                    valid = false;
+                }
+
+                int tempQty = (int) SellQty.getValue();
+                if (tempQty > p.getQty()) {
+                    valid = false;
+                }
+
+                if (valid) {
+                    p.setDaySold(D);
+                    p.setMonthSold(M);
+                    p.setYearSold(Y);
+                    //p.AddStock(-tempQty);
+                    p.setEfficiency();
+
+                    SellStatus.setForeground(Color.GREEN);
+                    SellStatus.setText("Item Sold!");
+                } else {
+                    SellStatus.setForeground(Color.RED);
+                    SellStatus.setText("Invalid fields!");
+                }
+            }
+        });
+
         Xbutton.setBorderPainted(false);
         Xbutton.setFocusPainted(false);
         Xbutton.addActionListener(new ActionListener() {
@@ -262,6 +353,15 @@ public class MainForm extends JFrame {
             }
         });
 
+        SellXButton.setBorderPainted(false);
+        SellXButton.setFocusPainted(false);
+        SellXButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                c.first(MainWindow);
+            }
+        });
+
         Name.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
@@ -276,6 +376,24 @@ public class MainForm extends JFrame {
                 if (Name.getText().isEmpty()) {
                     Name.setForeground(Color.LIGHT_GRAY);
                     Name.setText("Name");
+                }
+            }
+        });
+
+        SellName.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                SellStatus.setText("");
+                if (SellName.getText().equals("Name")) {
+                    SellName.setText("");
+                    SellName.setForeground(Color.WHITE);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (SellName.getText().isEmpty()) {
+                    SellName.setForeground(Color.LIGHT_GRAY);
+                    SellName.setText("Name");
                 }
             }
         });
@@ -330,6 +448,24 @@ public class MainForm extends JFrame {
                 if (Date.getText().isEmpty()) {
                     Date.setForeground(Color.LIGHT_GRAY);
                     Date.setText("Date Logged");
+                }
+            }
+        });
+
+        SellDate.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                SellStatus.setText("");
+                if (SellDate.getText().equals("Date Sold")) {
+                    SellDate.setText("");
+                    SellDate.setForeground(Color.WHITE);
+                }
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (SellDate.getText().isEmpty()) {
+                    SellDate.setForeground(Color.LIGHT_GRAY);
+                    SellDate.setText("Date Sold");
                 }
             }
         });
